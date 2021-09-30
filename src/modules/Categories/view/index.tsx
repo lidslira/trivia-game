@@ -16,21 +16,27 @@ const Categories: React.FC = () => {
     (state: ApplicationState) => state.categories,
   );
 
-  const showCategories = () => {
-    dispatch(showCategoriesListAction());
-  };
+  const renderItem = ({item}: any) => (
+    <S.ListContainer>
+      <S.CategoryCard>
+        <S.CategoryName> {item.name} </S.CategoryName>
+      </S.CategoryCard>
+    </S.ListContainer>
+  );
   return (
     <S.Container>
-      <S.CategoryCard onPress={() => showCategories()}>
-        <S.CategoryName> Category 1</S.CategoryName>
-      </S.CategoryCard>
-      <S.CategoryCard>
-        <S.CategoryName> Category 2</S.CategoryName>
-      </S.CategoryCard>
-      <S.CategoryCard>
-        <S.CategoryName> Category 3 </S.CategoryName>
-      </S.CategoryCard>
+      <S.Title>
+        <S.TextTitle> ESCOLHA UMA CATEGORIA: </S.TextTitle>
+      </S.Title>
+      <S.List
+        data={categoriesList}
+        extraData={categoriesList}
+        renderItem={renderItem}
+        keyExtractor={(item: any) => item.id.toString()}
+        showsVerticalScrollIndicator={false}
+      />
     </S.Container>
   );
 };
+
 export default Categories;

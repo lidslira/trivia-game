@@ -7,6 +7,11 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
+export const ListContainer = styled.View`
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+
 export const CategoryCard = styled.TouchableOpacity.attrs(({theme}) => ({
   shadowOpacity: 3,
   shadowOffset: {height: 2, width: 2},
@@ -28,9 +33,24 @@ export const Touchable = styled.TouchableOpacity``;
 
 export const CategoryName = styled.Text`
   color: ${({theme}) => theme.Colors.BLACK};
+  font-family: OpenSans-Light;
   font-size: 18px;
+`;
+
+export const Title = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0px 20px 0px;
+`;
+
+export const TextTitle = styled.Text`
+  color: ${({theme}) => theme.Colors.BLACK};
+  font-family: OpenSans-Regular;
+  font-size: 20px;
 `;
 
 export const List = styled.FlatList`
   width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
 `;
