@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {CATEGORIES, QUESTIONS, RESULTS} from '~/shared/constants/routes';
 
-import Categories from '~/shared/views/Categories';
+import Categories from '~/modules/Categories/view';
 import Results from '~/shared/views/Results';
 import Questions from '~/modules/Questions/views/Questions';
 
