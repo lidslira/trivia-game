@@ -10,14 +10,17 @@ import {
 } from './actions';
 
 export interface ResponseGenerator {
+  config?: any;
+  data?: any;
+  headers?: any;
+  request?: any;
   status: number;
-  data: any;
+  statusText?: string;
 }
 
 function* showCategoriesSagas() {
   try {
     const response: ResponseGenerator = yield call(showCategories);
-    console.tron.log(response);
 
     if (response.status >= 200 && response.status < 300) {
       yield put(
