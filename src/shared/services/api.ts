@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {CATEGORIES_PATH} from '../constants/api';
+import {BASE_PATH} from '../constants/api';
 
 const api = axios.create({
-  baseURL: CATEGORIES_PATH,
+  baseURL: BASE_PATH,
 });
 
 export default api;
