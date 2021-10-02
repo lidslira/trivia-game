@@ -10,9 +10,11 @@ import reducers from './ducks';
 import sagas from './sagas';
 
 import {CategoriesState} from '../../modules/Categories/store/ducks/categories/types';
+import {QuestionsState} from '~/modules/Questions/store/ducks/questions/types';
 
 export interface ApplicationState {
   categories: CategoriesState;
+  questions: QuestionsState;
 }
 
 export const persistConfig = {

@@ -1,4 +1,4 @@
-import {vs} from 'react-native-size-matters';
+import {s, vs} from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -46,7 +46,7 @@ export const Title = styled.View`
 export const TextTitle = styled.Text`
   color: ${({theme}) => theme.Colors.BLACK};
   font-family: OpenSans-Regular;
-  font-size: 20px;
+  font-size: ${s(20)}px;
 `;
 
 export const List = styled.FlatList`

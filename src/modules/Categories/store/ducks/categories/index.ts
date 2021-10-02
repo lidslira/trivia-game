@@ -4,7 +4,6 @@ import {CategoriesTypes, CategoriesState} from './types';
 const INITIAL_STATE: CategoriesState = {
   loading: false,
   categoriesList: [],
-
   category: {
     id: 0,
     name: '',
@@ -37,25 +36,6 @@ const reducer: Reducer<CategoriesState> = (
         categoryHasError: true,
       };
 
-    /*    case CategoriesTypes.GET_CATEGORY:
-      return {
-        ...state,
-        loading: true,
-      };
-    case CategoriesTypes.GET_CATEGORY_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        category: payload.category,
-        categoryHasError: false,
-      };
-    case CategoriesTypes.GET_CATEGORY_ERROR:
-      return {
-        ...state,
-        loading: false,
-        categoryHasError: true,
-      };
-*/
     default:
       return state;
   }
