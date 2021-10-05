@@ -47,8 +47,16 @@ const Questions: React.FC = () => {
     const answers = questions?.incorrect_answers.concat(
       questions?.correct_answer,
     );
-    console.tron.log(answers);
-    setOptions(answers);
+    console.tron.log('concat', answers);
+    const newAnswersArr = answers?.map((item: any, index: any) => {
+      const newItem = {
+        id: index,
+        answer: item,
+      };
+      return newItem;
+    });
+    console.tron.log('novo array', newAnswersArr);
+    setOptions(newAnswersArr);
   }, [questions]);
 
   const nextQuestion = () => {
