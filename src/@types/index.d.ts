@@ -4,6 +4,7 @@ import 'styled-components';
 type ColorsProps = {
   COLOR_APPLICATION: string;
   LIGHT_SKY_BLUE: string;
+  BUTTON_COLOR: string;
   BLACK: string;
   WHITE: string;
   gray_dark: string;
