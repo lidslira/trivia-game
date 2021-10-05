@@ -2,6 +2,7 @@ export default {
   Colors: {
     COLOR_APPLICATION: '#00BFFF',
     LIGHT_SKY_BLUE: '#87CEFA',
+    BUTTON_COLOR: '#FFDAB9',
     BLACK: '#000',
     WHITE: '#FFF',
     gray_dark: '#1c1c1c',

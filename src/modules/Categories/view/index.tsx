@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/core';
 import {useDispatch, useSelector} from 'react-redux';
 import {Category} from '~/dtos';
@@ -9,6 +9,7 @@ import {QUESTIONS} from '~/shared/constants/routes';
 
 import {ApplicationState} from '~/shared/store';
 import {getQuestionsAction} from '~/modules/Questions/store/ducks/questions/actions';
+import {showCategoriesListAction} from '../store/ducks/categories/actions';
 
 const Categories: React.FC = () => {
   const navigation = useNavigation();
@@ -19,6 +20,10 @@ const Categories: React.FC = () => {
   );
 
   const [difficultyLevel, setDifficultyLevel] = useState<string>('easy');
+
+  useEffect(() => {
+    dispatch(showCategoriesListAction());
+  }, [dispatch]);
 
   const goToQuestions = (category: Category) => {
     dispatch(getQuestionsAction(category.id, difficultyLevel));

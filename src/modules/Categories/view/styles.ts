@@ -24,12 +24,10 @@ export const CategoryCard = styled.TouchableOpacity.attrs(({theme}) => ({
   background: ${({theme}) => theme.Colors.COLOR_APPLICATION};
   border-width: 1px;
   border-color: ${({theme}) => theme.Colors.BLACK};
-  margin-bottom: ${vs(15)}px;
+  margin-bottom: ${vs(10)}px;
   border-radius: 6px;
   flex-direction: row;
 `;
-
-export const Touchable = styled.TouchableOpacity``;
 
 export const CategoryName = styled.Text`
   color: ${({theme}) => theme.Colors.BLACK};
@@ -38,14 +36,17 @@ export const CategoryName = styled.Text`
 `;
 
 export const Title = styled.View`
+  width: 100%;
   align-items: center;
   justify-content: center;
-  margin: 40px 0px 20px 0px;
+  margin: 20px;
+  padding: 10px;
+  background: ${({theme}) => theme.Colors.BUTTON_COLOR};
 `;
 
 export const TextTitle = styled.Text`
   color: ${({theme}) => theme.Colors.BLACK};
-  font-family: OpenSans-Regular;
+  font-family: 'OpenSans-Regular';
   font-size: ${s(20)}px;
 `;
 

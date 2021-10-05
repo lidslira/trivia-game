@@ -7,7 +7,7 @@ import {CATEGORIES, QUESTIONS, RESULTS} from '~/shared/constants/routes';
 
 import Categories from '~/modules/Categories/view';
 import Results from '~/shared/views/Results';
-import Questions from '~/modules/Questions/views/Questions';
+import Questions from '~/modules/Questions/view';
 
 const Stack = createStackNavigator();
 
