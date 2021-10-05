@@ -4,7 +4,7 @@ import {UserTypes, UserState} from './types';
 const INITIAL_STATE: UserState = {
   currentAnswer: {
     id: undefined,
-    option: '',
+    answer: '',
   },
 };
 
@@ -16,7 +16,7 @@ const reducer: Reducer<UserState> = (
     case UserTypes.SAVE_USER_ANSWER:
       return {
         ...state,
-        option: payload.option,
+        answer: payload.answer,
       };
     case UserTypes.RESET_ANSWER:
       return {

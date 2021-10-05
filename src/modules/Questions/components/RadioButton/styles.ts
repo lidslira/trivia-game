@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import {vs, s} from 'react-native-size-matters';
 
 export const ButtonsList = styled.View`
+  margin-left: ${vs(25)}px;
   margin-top: ${vs(22)}px;
   align-self: flex-start;
 `;
@@ -17,7 +18,7 @@ export const Button = styled.TouchableOpacity`
   width: ${s(24)}px;
   border-radius: ${s(12)}px;
   border-width: ${s(2)}px;
-  border-color: ${({theme}) => theme.Colors.BUTTON_COLOR};
+  border-color: ${({theme}) => theme.Colors.BLACK};
   align-items: center;
   justify-content: center;
 `;

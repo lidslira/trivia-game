@@ -9,7 +9,7 @@ export enum UserTypes {
 export interface UserState {
   currentAnswer: {
     id: number | undefined;
-    option: string;
+    answer: string;
   };
 }
 
@@ -23,5 +23,5 @@ export interface ResetAnswerProps extends Action {
 
 export interface SaveUserAnswerProps extends Action {
   type: UserTypes.SAVE_USER_ANSWER;
-  payload: {option: string};
+  payload: {answer: string};
 }

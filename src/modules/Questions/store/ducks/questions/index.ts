@@ -3,14 +3,9 @@ import {QuestionsTypes, QuestionsState} from './types';
 
 const INITIAL_STATE: QuestionsState = {
   loading: false,
-  questionsList: {
-    category: '',
-    type: '',
-    difficulty: '',
-    question: '',
-    correct_answer: '',
-    incorrect_answers: [''],
-  },
+  questionsList: [],
+  index: 0,
+  score: 0,
 };
 
 const reducer: Reducer<QuestionsState> = (
@@ -33,6 +28,17 @@ const reducer: Reducer<QuestionsState> = (
       return {
         ...state,
         loading: false,
+      };
+    case QuestionsTypes.SET_INDEX:
+      return {
+        ...state,
+        index: payload.index,
+      };
+
+    case QuestionsTypes.SET_SCORE:
+      return {
+        ...state,
+        score: payload.score,
       };
 
     default:

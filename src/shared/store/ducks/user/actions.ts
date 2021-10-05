@@ -6,8 +6,8 @@ import {
   ResetAnswerProps,
 } from './types';
 
-export const saveUserAnswerAction = (option: string): SaveUserAnswerProps =>
-  action(UserTypes.SAVE_USER_ANSWER, {option});
+export const saveUserAnswerAction = (answer: string): SaveUserAnswerProps =>
+  action(UserTypes.SAVE_USER_ANSWER, {answer});
 
 export const resetInfoAction = (): ResetInfoProps =>
   action(UserTypes.RESET_INFO);
