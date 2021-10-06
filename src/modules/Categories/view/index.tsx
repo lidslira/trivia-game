@@ -19,14 +19,12 @@ const Categories: React.FC = () => {
     (state: ApplicationState) => state.categories,
   );
 
-  const [difficultyLevel, setDifficultyLevel] = useState<string>('easy');
-
   useEffect(() => {
     dispatch(showCategoriesListAction());
   }, [dispatch]);
 
   const goToQuestions = (category: Category) => {
-    dispatch(getQuestionsAction(category.id, difficultyLevel));
+    dispatch(getQuestionsAction(category.id, 'easy'));
     navigation.navigate(QUESTIONS);
   };
 

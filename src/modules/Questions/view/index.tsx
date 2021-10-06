@@ -10,12 +10,14 @@ import {ApplicationState} from '~/shared/store';
 import {CATEGORIES} from '~/shared/constants/routes';
 import RadioButtonList from '../components/RadioButton/RadioButtonList';
 import {resetAnswerAction} from '~/shared/store/ducks/user/actions';
+import {allOptionsMixed} from '../utils';
 import {setScoreAction} from '../store/ducks/questions/actions';
 
-interface OptionsProps {
+export interface OptionsProps {
   id: number;
   answer: string;
 }
+
 const Questions: React.FC = () => {
   const navigation = useNavigation();
 
@@ -29,33 +31,19 @@ const Questions: React.FC = () => {
   const [questionTitle, setQuestionTitle] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [options, setOptions] = useState<OptionsProps[]>([]);
-  // const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const dispatch = useDispatch();
 
-  const correctAnswer = questions && questions.correct_answer;
-
-  /* const getRandomInt = (max: any) =>
-  Math.floor(Math.random() * Math.floor(max));
-
-  */
   useEffect(() => {
     if (!questions) {
       return;
     }
-    const answers: string | string[] = questions?.incorrect_answers.concat(
+    const newAnswersArr = allOptionsMixed(
+      questions?.incorrect_answers,
       questions?.correct_answer,
     );
-
-    const newAnswersArr = answers?.map((item: any, index: any) => {
-      const newItem = {
-        id: index,
-        answer: item,
-      };
-      return newItem;
-    });
     setOptions(newAnswersArr);
-  }, [questions]);
+  }, [questions, currentAnswer]);
 
   const nextQuestion = () => {
     if (questionIndex === 9) {
@@ -87,11 +75,7 @@ const Questions: React.FC = () => {
       setQuestionTitle(decode(questions?.question));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [questionsList, questionIndex, questions, currentAnswer]);
-
-  if (currentAnswer === correctAnswer) {
-    dispatch(setScoreAction(score + 1));
-  }
+  }, [questionsList, questionIndex, questions]);
 
   return (
     <S.Container>

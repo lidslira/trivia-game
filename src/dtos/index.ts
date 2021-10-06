@@ -9,7 +9,7 @@ export interface Question {
   difficulty: string;
   question: string;
   correct_answer: string;
-  incorrect_answers: string[] | string;
+  incorrect_answers: string[];
 }
 
 export interface QuestionsResponseProps {

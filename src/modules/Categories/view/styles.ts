@@ -41,7 +41,6 @@ export const Title = styled.View`
   justify-content: center;
   margin: 20px;
   padding: 10px;
-  background: ${({theme}) => theme.Colors.BUTTON_COLOR};
 `;
 
 export const TextTitle = styled.Text`

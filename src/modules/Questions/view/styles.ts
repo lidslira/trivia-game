@@ -18,6 +18,7 @@ export const QuestionContainer = styled.View`
   margin: ${vs(20)}px;
   padding: ${vs(15)}px;
   border-radius: 6px;
+  width: 100%;
 `;
 
 export const InfoContainer = styled.View`
@@ -25,13 +26,12 @@ export const InfoContainer = styled.View`
 `;
 
 export const InfoText = styled.Text`
-  font-size: 18px;
-  font-family: OpenSans-Regular;
+  font-size: 19px;
+  font-family: 'OpenSans-Regular';
 `;
 
 export const ScoreInfo = styled.Text`
-  font-size: 18px;
-  font-family: OpenSans-Regular;
+  font-size: 20px;
 `;
 
 export const AnswerContainer = styled.TouchableOpacity.attrs(({theme}) => ({
