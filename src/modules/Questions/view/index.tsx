@@ -12,7 +12,7 @@ import RadioButtonList from '../components/RadioButton/RadioButtonList';
 import {resetAnswerAction} from '~/shared/store/ducks/user/actions';
 import {setScoreAction} from '../store/ducks/questions/actions';
 
-export interface AnswerProps {
+interface OptionsProps {
   id: number;
   answer: string;
 }
@@ -28,26 +28,25 @@ const Questions: React.FC = () => {
   const [questions, setQuestions] = useState<Question>();
   const [questionTitle, setQuestionTitle] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<OptionsProps[]>([]);
   // const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const dispatch = useDispatch();
 
-  // const question = questions;
-  // const answer = question && question.correct_answer;
+  const correctAnswer = questions && questions.correct_answer;
 
   /* const getRandomInt = (max: any) =>
-    Math.floor(Math.random() * Math.floor(max));
+  Math.floor(Math.random() * Math.floor(max));
 
-    */
+  */
   useEffect(() => {
     if (!questions) {
       return;
     }
-    const answers = questions?.incorrect_answers.concat(
+    const answers: string | string[] = questions?.incorrect_answers.concat(
       questions?.correct_answer,
     );
-    console.tron.log('concat', answers);
+
     const newAnswersArr = answers?.map((item: any, index: any) => {
       const newItem = {
         id: index,
@@ -55,7 +54,6 @@ const Questions: React.FC = () => {
       };
       return newItem;
     });
-    console.tron.log('novo array', newAnswersArr);
     setOptions(newAnswersArr);
   }, [questions]);
 
@@ -74,15 +72,14 @@ const Questions: React.FC = () => {
     nextQuestion();
   };
 
-  const {handleSubmit, dirty, handleChange, setFieldValue, values, errors} =
-    useFormik({
-      initialValues: {
-        currentAnswer,
-      },
-      enableReinitialize: true,
-      onSubmit: saveUserAnswer,
-      validateOnChange: false,
-    });
+  const {handleSubmit, dirty, setFieldValue, values} = useFormik({
+    initialValues: {
+      currentAnswer,
+    },
+    enableReinitialize: true,
+    onSubmit: saveUserAnswer,
+    validateOnChange: false,
+  });
 
   useEffect(() => {
     if (questionsList) {
@@ -91,36 +88,23 @@ const Questions: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionsList, questionIndex, questions, currentAnswer]);
-  /*
-  if (currentAnswer === answer) {
+
+  if (currentAnswer === correctAnswer) {
     dispatch(setScoreAction(score + 1));
   }
 
-    const arr = questions?.incorrect_answers.concat(
-        questions?.correct_answer,
-      );
-      const newAnswersArr = arr?.map((item: any, index: any) => {
-        const newItem = {
-          id: index,
-          answer: item,
-        };
-        return newItem;
-      });
-      setOptions(newAnswersArr);
-  */
-  console.tron.log('opt', options);
   return (
     <S.Container>
       <S.QuestionContainer>
         <S.TextTitle> {questionTitle} </S.TextTitle>
-        <RadioButtonList
-          selected={values.currentAnswer}
-          checkRadio={(value) => {
-            setFieldValue('currentAnswer', value);
-          }}
-          data={options}
-        />
       </S.QuestionContainer>
+      <RadioButtonList
+        selected={values.currentAnswer}
+        checkRadio={(value) => {
+          setFieldValue('currentAnswer', value);
+        }}
+        data={options}
+      />
       <S.Button disabled={!dirty} onPress={() => handleSubmit()}>
         <S.ButtonText>{questionIndex === 9 ? 'Finish' : 'Next'}</S.ButtonText>
       </S.Button>

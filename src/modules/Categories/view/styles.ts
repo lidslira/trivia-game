@@ -21,7 +21,7 @@ export const CategoryCard = styled.TouchableOpacity.attrs(({theme}) => ({
   padding: 20px 15px;
   justify-content: center;
   width: 100%;
-  background: ${({theme}) => theme.Colors.COLOR_APPLICATION};
+  background: ${({theme}) => theme.Colors.LIGHT_SKY_BLUE};
   border-width: 1px;
   border-color: ${({theme}) => theme.Colors.BLACK};
   margin-bottom: ${vs(10)}px;
@@ -47,6 +47,7 @@ export const Title = styled.View`
 export const TextTitle = styled.Text`
   color: ${({theme}) => theme.Colors.BLACK};
   font-family: 'OpenSans-Regular';
+  font-weight: bold;
   font-size: ${s(20)}px;
 `;
 
