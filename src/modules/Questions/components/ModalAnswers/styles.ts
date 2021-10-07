@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import {s, vs} from 'react-native-size-matters';
 
+interface TextProps {
+  isItRight: boolean;
+}
+
 export const Container = styled.TouchableOpacity`
   background-color: ${({theme}) => theme.Colors.GRAY_LIGHT};
   flex: 1;
@@ -37,9 +41,10 @@ export const Button = styled.TouchableOpacity`
   margin-top: ${vs(10)}px;
 `;
 
-export const ButtonText = styled.Text`
+export const ButtonText = styled.Text<TextProps>`
   font-size: ${s(20)}px;
-  color: ${({theme}) => theme.Colors.ERROR};
+  color: ${({theme, isItRight}) =>
+    isItRight ? theme.Colors.CORRECT : theme.Colors.ERROR};
 `;
 
 export const Title = styled.Text`

@@ -6,12 +6,10 @@ import {
   GetQuestionsProps,
   GetQuestionsSuccessProps,
   GetQuestionsErrorProps,
-  SetIndexProps,
-  SetScoreProps,
 } from './types';
 
 export const getQuestionsAction = (
-  id: number,
+  id: string,
   difficultyLevel: string,
 ): GetQuestionsProps =>
   action(QuestionsTypes.GET_QUESTIONS, {id, difficultyLevel});
@@ -23,9 +21,3 @@ export const getQuestionsSuccessAction = (
 
 export const getQuestionsErrorAction = (): GetQuestionsErrorProps =>
   action(QuestionsTypes.GET_QUESTIONS_ERROR);
-
-export const setIndexAction = (index: number): SetIndexProps =>
-  action(QuestionsTypes.SET_INDEX, {index});
-
-export const setScoreAction = (score: number): SetScoreProps =>
-  action(QuestionsTypes.SET_SCORE, {score});

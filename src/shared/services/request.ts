@@ -1,7 +1,7 @@
 import api from '~/shared/services/api';
 
 interface ParamsProps {
-  id: number;
+  id: string;
   difficultyLevel?: string;
 }
 

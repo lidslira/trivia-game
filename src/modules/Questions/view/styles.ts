@@ -22,16 +22,22 @@ export const QuestionContainer = styled.View`
 `;
 
 export const InfoContainer = styled.View`
-  margin: ${vs(20)}px;
+  margin: ${vs(10)}px;
 `;
 
 export const InfoText = styled.Text`
+  font-size: 22px;
+  font-family: 'OpenSans-Regular';
+`;
+
+export const Difficulty = styled.Text`
   font-size: 19px;
   font-family: 'OpenSans-Regular';
 `;
 
 export const ScoreInfo = styled.Text`
   font-size: 20px;
+  font-weight: bold;
 `;
 
 export const AnswerContainer = styled.TouchableOpacity.attrs(({theme}) => ({
@@ -65,7 +71,7 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   border-width: 1px;
   border-radius: 10px;
-  margin: 20px;
+  margin: 30px;
   padding: 10px;
   border-color: ${({theme}) => theme.Colors.BLACK};
   background-color: ${({theme, disabled}) =>

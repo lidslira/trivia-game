@@ -4,10 +4,7 @@ import {CategoriesTypes, CategoriesState} from './types';
 const INITIAL_STATE: CategoriesState = {
   loading: false,
   categoriesList: [],
-  category: {
-    id: 0,
-    name: '',
-  },
+  categoryId: '',
 };
 
 const reducer: Reducer<CategoriesState> = (

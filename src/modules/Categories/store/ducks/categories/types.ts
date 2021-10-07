@@ -10,7 +10,7 @@ export enum CategoriesTypes {
 export interface CategoriesState {
   loading: boolean;
   categoriesList: [];
-  category: Category;
+  categoryId: string;
 }
 
 export interface ShowCategoriesListProps extends Action {
