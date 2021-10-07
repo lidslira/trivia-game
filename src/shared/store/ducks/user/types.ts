@@ -30,7 +30,7 @@ export interface UserState {
   easy: AnswersProps;
   medium: AnswersProps;
   hard: AnswersProps;
-  score: number;
+  score: string;
 }
 
 export interface IncreaseWrongQuestionsStreakProps extends Action {

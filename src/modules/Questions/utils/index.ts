@@ -158,3 +158,15 @@ export const verifyAnswers = (
     }
   }
 };
+
+export const verifyCorrectAnswer = (
+  correctAnswer: string | undefined,
+  userAnswer: string | undefined,
+  userInfo: UserState | undefined,
+) => {
+  if (correctAnswer === userAnswer && userInfo !== undefined) {
+    questions.dispatch(setScoreAction(userInfo.score + 1));
+    return true;
+  }
+  return false;
+};

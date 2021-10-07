@@ -14,7 +14,7 @@ import {
   resetAnswerAction,
   setScoreAction,
 } from '~/shared/store/ducks/user/actions';
-import {allOptionsMixed, verifyAnswers} from '../utils';
+import {allOptionsMixed, verifyAnswers, verifyCorrectAnswer} from '../utils';
 import ModalAnswers from '../components/ModalAnswers';
 
 export interface OptionsProps {
@@ -88,13 +88,16 @@ const Questions: React.FC = () => {
       user,
       categoryId,
     );
-    data.currentAnswer.answer === questions?.correct_answer
-      ? setIsItRight(true)
-      : setIsItRight(false);
-    isItRight ? dispatch(setScoreAction(score + 1)) : score;
     actions.resetForm();
-    dispatch(resetAnswerAction());
+    const verify = verifyCorrectAnswer(
+      questions?.correct_answer,
+      data.currentAnswer.answer,
+      user,
+    );
+    setIsItRight(verify);
+
     setModalIsVisible(true);
+    dispatch(resetAnswerAction());
   };
 
   const {handleSubmit, dirty, setFieldValue, values} = useFormik({
