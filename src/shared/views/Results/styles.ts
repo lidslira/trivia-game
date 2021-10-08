@@ -15,7 +15,7 @@ export const TextTitle = styled.Text`
   margin: 30px;
 `;
 
-export const InfoContainer = styled.TouchableOpacity.attrs(({theme}) => ({
+export const InfoContainer = styled.View.attrs(({theme}) => ({
   shadowOpacity: 3,
   shadowOffset: {height: 4, width: 5},
   shadowColor: theme.Colors.gray_dark,

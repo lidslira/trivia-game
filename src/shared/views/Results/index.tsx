@@ -13,6 +13,11 @@ const Results: React.FC = () => {
 
   const {score} = useSelector((state: ApplicationState) => state.user);
 
+  const user = useSelector((state: ApplicationState) => state.user);
+
+  const allWrongAnswers =
+    user.easy.wrongAnswers + user.medium.wrongAnswers + user.hard.wrongAnswers;
+
   const replay = () => {
     dispatch(setScoreAction(0));
     navigation.navigate(CATEGORIES);
@@ -20,8 +25,30 @@ const Results: React.FC = () => {
   return (
     <S.Container>
       <S.InfoContainer>
-        <S.TextTitle>RESULTS</S.TextTitle>
-        <S.InfoText> Final Score: {score} </S.InfoText>
+        <S.TextTitle> RESULTS </S.TextTitle>
+        <S.InfoText> Yout Final Score: {score}! </S.InfoText>
+        <S.InfoText>
+          You got right {score} questions. {`\n`}
+          {user.easy.rightAnswers} were easy level.
+        </S.InfoText>
+        {user?.medium?.rightAnswers ? (
+          <S.InfoText>{user.medium.rightAnswers} were medium level.</S.InfoText>
+        ) : null}
+        {user.hard.rightAnswers ? (
+          <S.InfoText> • {user.hard.rightAnswers} were hard level. </S.InfoText>
+        ) : null}
+        <S.InfoText>
+          You got wrong {allWrongAnswers} questions. {`\n`}•
+          {user.easy.wrongAnswers} were easy level.
+        </S.InfoText>
+        {user.medium.wrongAnswers ? (
+          <S.InfoText>
+            • {user.medium.wrongAnswers} were medium level.
+          </S.InfoText>
+        ) : null}
+        {user.hard.wrongAnswers ? (
+          <S.InfoText> • {user.hard.wrongAnswers} were hard level. </S.InfoText>
+        ) : null}
         <S.Button onPress={() => replay()}>
           <S.InfoText> Try again </S.InfoText>
         </S.Button>
