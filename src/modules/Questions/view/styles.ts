@@ -65,7 +65,7 @@ export const AnswerText = styled.Text`
 `;
 
 export const Button = styled.TouchableOpacity`
-  width: ${vs(150)}px;
+  width: ${vs(100)}px;
   height: ${vs(50)}px;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,19 @@ export const Button = styled.TouchableOpacity`
   padding: 10px;
   border-color: ${({theme}) => theme.Colors.BLACK};
   background-color: ${({theme, disabled}) =>
-    disabled ? theme.Colors.GRAY_LIGHT : theme.Colors.BUTTON_COLOR};
+    disabled ? theme.Colors.GRAY_LIGHT : theme.Colors.LIGHT_SKY_BLUE};
+`;
+export const ButtonQuit = styled.TouchableOpacity`
+  width: ${vs(100)}px;
+  height: ${vs(50)}px;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-radius: 10px;
+  margin: 30px;
+  padding: 10px;
+  border-color: ${({theme}) => theme.Colors.BLACK};
+  background-color: ${({theme}) => theme.Colors.ERROR};
 `;
 
 export const ButtonText = styled.Text`

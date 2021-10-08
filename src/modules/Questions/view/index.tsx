@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Modal} from 'react-native';
+import {Alert, Modal} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {decode} from 'html-entities';
@@ -8,11 +8,11 @@ import {Question} from '~/dtos';
 
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
-import {RESULTS} from '~/shared/constants/routes';
+import {CATEGORIES, RESULTS} from '~/shared/constants/routes';
 import RadioButtonList from '../components/RadioButton/RadioButtonList';
 import {
   resetAnswerAction,
-  setScoreAction,
+  resetInfoAction,
 } from '~/shared/store/ducks/user/actions';
 import {allOptionsMixed, verifyAnswers, verifyCorrectAnswer} from '../utils';
 import ModalAnswers from '../components/ModalAnswers';
@@ -33,13 +33,9 @@ const Questions: React.FC = () => {
   const {questionsList} = useSelector(
     (state: ApplicationState) => state.questions,
   );
-  const {currentAnswer, score} = useSelector(
-    (state: ApplicationState) => state.user,
-  );
+  const {category} = useSelector((state: ApplicationState) => state.categories);
 
-  const {categoryId} = useSelector(
-    (state: ApplicationState) => state.categories,
-  );
+  const {currentAnswer} = useSelector((state: ApplicationState) => state.user);
 
   const user = useSelector((state: ApplicationState) => state.user);
 
@@ -86,7 +82,7 @@ const Questions: React.FC = () => {
       data.currentAnswer.answer,
       questions?.difficulty,
       user,
-      categoryId,
+      category,
     );
     actions.resetForm();
     const verify = verifyCorrectAnswer(
@@ -118,6 +114,17 @@ const Questions: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionsList, questionIndex, questions, currentAnswer]);
 
+  const resetInformations = () => {
+    dispatch(resetInfoAction());
+    navigation.navigate(CATEGORIES);
+  };
+
+  const showAlert = () => {
+    Alert.alert(`Attention`, `Are you sure you want to give up?`, [
+      {text: 'Cancel', style: 'cancel'},
+      {text: 'Yes', onPress: () => resetInformations()},
+    ]);
+  };
   return (
     <S.Container>
       <S.QuestionContainer>
@@ -133,6 +140,9 @@ const Questions: React.FC = () => {
       <S.Button disabled={!dirty} onPress={() => handleSubmit()}>
         <S.ButtonText>{questionIndex === 9 ? 'Finish' : 'Next'}</S.ButtonText>
       </S.Button>
+      <S.ButtonQuit onPress={() => showAlert()}>
+        <S.ButtonText>Quit</S.ButtonText>
+      </S.ButtonQuit>
       <Modal
         transparent
         visible={modalIsVisible}

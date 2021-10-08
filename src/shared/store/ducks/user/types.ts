@@ -13,6 +13,7 @@ export enum UserTypes {
   HARD_RIGHT_QUESTIONS = 'HARD_RIGHT_QUESTIONS',
   HARD_WRONG_QUESTIONS = 'HARD_WRONG_QUESTIONS',
   SET_SCORE = 'SET_SCORE',
+  RESET_INFO = 'RESET_INFO',
 }
 
 interface AnswersProps {
@@ -90,4 +91,8 @@ export interface SaveUserAnswerProps extends Action {
 export interface SetScoreProps extends Action {
   type: UserTypes.SET_SCORE;
   payload: {score: string};
+}
+
+export interface ResetInfosProps extends Action {
+  type: UserTypes.RESET_INFO;
 }

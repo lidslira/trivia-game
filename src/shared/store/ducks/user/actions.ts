@@ -13,6 +13,7 @@ import {
   ResetAnswerProps,
   PreviousResultProps,
   SetScoreProps,
+  ResetInfosProps,
 } from './types';
 
 export const incrementWrongStreak = (
@@ -68,3 +69,6 @@ export const resetAnswerAction = (): ResetAnswerProps =>
 
 export const setScoreAction = (score: string): SetScoreProps =>
   action(UserTypes.SET_SCORE, {score});
+
+export const resetInfoAction = (): ResetInfosProps =>
+  action(UserTypes.RESET_INFO);

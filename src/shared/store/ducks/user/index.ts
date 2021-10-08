@@ -110,6 +110,8 @@ const reducer: Reducer<UserState> = (
         ...state,
         score: payload.score,
       };
+    case UserTypes.RESET_INFO:
+      return INITIAL_STATE;
     default:
       return state;
   }
